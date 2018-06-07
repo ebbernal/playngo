@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PlayNGo.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.LastName)*@
+                <label>Last Name</label>
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.FirstMidName)*@
+                <label>First Name</label>
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.EnrollmentDate)*@
+                <label>Enrollment Date</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.StudentID" class="btn btn-default">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.StudentID" class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.StudentID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <label>Total Students:</label> @ViewBag.TotalStudents
+            </td>
+        </tr>
+    </tbody>
+</table>
